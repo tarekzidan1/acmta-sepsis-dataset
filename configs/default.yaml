@@ -1,0 +1,38 @@
+# Reproduction configuration = thesis Chapter 3 protocol. Values marked PROVISIONAL are not specified in the thesis.
+data:
+  dataset: PhysioNet/CinC Challenge 2019 v1.0.0 (training_setA + training_setB)   # §3.2
+  variable_set: ch3          # §3.4: 6 vital signs, 5 laboratory values, age, sex   (alternative: ch4_full, §4.10)
+  min_age: 18                # §3.3
+  min_icu_hours: 0           # §3.3 "no further exclusions" (Chapter 4 synthetic run used 8)
+  onset_shift_hours: 6       # PROVISIONAL: T0 = first SepsisLabel hour + 6 h (PhysioNet labels are shifted 6 h ahead)
+windows:
+  length_h: 12               # §1.6, §3.5
+  stride_h: 1                # §1.6, §3.5 (Chapter 4 §4.10.1 says 2)
+  horizon_h: 12              # §3.3
+  buffer_h: 4                # §1.6, §3.3, Figure 2.1
+  label_mode: ch3            # positive iff 4 <= T0 - t <= 12  (alternative ch4: 4 < T0 - t <= 16)
+  min_history_h: 1           # PROVISIONAL (windows from the first ICU hour, padded)
+split:
+  test_fraction: 0.2         # §3.7.1 patient-level 80:20
+  folds: 5                   # §3.7.1 patient-grouped stratified 5-fold CV
+  validation_fold: 0         # PROVISIONAL: deep models use one CV fold for early stopping (compute budget)
+  seed: 42                   # PROVISIONAL
+model:                       # §3.6; ranges from Table 3.3
+  hidden: 64                 # PROVISIONAL (range 64-256)
+  heads: 4                   # PROVISIONAL (range 2-8)
+  dropout: 0.2               # PROVISIONAL (range 0.1-0.5)
+  encoder: bilstm            # bilstm | transformer
+  fusion: acmta              # acmta | early | late | vitals_only | labs_only
+  mamg: true
+  time_bias: true
+training:
+  optimizer: AdamW           # §3.6.4
+  lr: 1.0e-3                 # PROVISIONAL (range 1e-4 to 1e-2)
+  weight_decay: 1.0e-4       # PROVISIONAL (range 1e-6 to 1e-3)
+  batch_size: 256            # PROVISIONAL (range 64-256)
+  loss: class-weighted BCE   # Eq. 3.10, w+ = N_neg / N_pos of the training windows
+  early_stopping: validation loss, patience 3, max 10 epochs   # PROVISIONAL patience/epochs
+evaluation:
+  bootstrap_resamples: 2000  # §3.8 patient-level
+  cucts: {sensitivity_floor: 0.85, alarms_per_patient_day: 3}   # §4.6
+  ece_bins: 10               # PROVISIONAL

@@ -1,0 +1,138 @@
+{
+ "name": "real_ch3",
+ "comment": "Seed-variability runs for the journal manuscript: the six Table 3.4 deep-learning conditions retrained with training seeds 43 and 44 (same split, folds and provisional hyper-parameters as the seed-42 reproduction runs). Bootstrap CIs are taken from the seed-42 runs; these runs give the across-seed spread. Component ablations added for the manuscript: ACMTA-Sepsis (BiLSTM) without MAMG and without the learned time-gap bias, seeds 42-44.",
+ "jobs": [
+  {
+   "run": "bilstm_acmta_s43",
+   "encoder": "bilstm",
+   "fusion": "acmta",
+   "seed": 43,
+   "n_boot": 200
+  },
+  {
+   "run": "transformer_acmta_s43",
+   "encoder": "transformer",
+   "fusion": "acmta",
+   "seed": 43,
+   "n_boot": 200
+  },
+  {
+   "run": "bilstm_early_s43",
+   "encoder": "bilstm",
+   "fusion": "early",
+   "seed": 43,
+   "n_boot": 200
+  },
+  {
+   "run": "bilstm_late_s43",
+   "encoder": "bilstm",
+   "fusion": "late",
+   "seed": 43,
+   "n_boot": 200
+  },
+  {
+   "run": "bilstm_vitals_only_s43",
+   "encoder": "bilstm",
+   "fusion": "vitals_only",
+   "seed": 43,
+   "n_boot": 200
+  },
+  {
+   "run": "bilstm_labs_only_s43",
+   "encoder": "bilstm",
+   "fusion": "labs_only",
+   "seed": 43,
+   "n_boot": 200
+  },
+  {
+   "run": "bilstm_acmta_s44",
+   "encoder": "bilstm",
+   "fusion": "acmta",
+   "seed": 44,
+   "n_boot": 200
+  },
+  {
+   "run": "transformer_acmta_s44",
+   "encoder": "transformer",
+   "fusion": "acmta",
+   "seed": 44,
+   "n_boot": 200
+  },
+  {
+   "run": "bilstm_early_s44",
+   "encoder": "bilstm",
+   "fusion": "early",
+   "seed": 44,
+   "n_boot": 200
+  },
+  {
+   "run": "bilstm_late_s44",
+   "encoder": "bilstm",
+   "fusion": "late",
+   "seed": 44,
+   "n_boot": 200
+  },
+  {
+   "run": "bilstm_vitals_only_s44",
+   "encoder": "bilstm",
+   "fusion": "vitals_only",
+   "seed": 44,
+   "n_boot": 200
+  },
+  {
+   "run": "bilstm_labs_only_s44",
+   "encoder": "bilstm",
+   "fusion": "labs_only",
+   "seed": 44,
+   "n_boot": 200
+  },
+  {
+   "run": "bilstm_acmta_nomamg",
+   "encoder": "bilstm",
+   "fusion": "acmta",
+   "seed": 42,
+   "no_mamg": true,
+   "n_boot": 200
+  },
+  {
+   "run": "bilstm_acmta_notimebias",
+   "encoder": "bilstm",
+   "fusion": "acmta",
+   "seed": 42,
+   "no_time_bias": true,
+   "n_boot": 200
+  },
+  {
+   "run": "bilstm_acmta_nomamg_s43",
+   "encoder": "bilstm",
+   "fusion": "acmta",
+   "seed": 43,
+   "no_mamg": true,
+   "n_boot": 200
+  },
+  {
+   "run": "bilstm_acmta_notimebias_s43",
+   "encoder": "bilstm",
+   "fusion": "acmta",
+   "seed": 43,
+   "no_time_bias": true,
+   "n_boot": 200
+  },
+  {
+   "run": "bilstm_acmta_nomamg_s44",
+   "encoder": "bilstm",
+   "fusion": "acmta",
+   "seed": 44,
+   "no_mamg": true,
+   "n_boot": 200
+  },
+  {
+   "run": "bilstm_acmta_notimebias_s44",
+   "encoder": "bilstm",
+   "fusion": "acmta",
+   "seed": 44,
+   "no_time_bias": true,
+   "n_boot": 200
+  }
+ ]
+}

@@ -1,0 +1,15 @@
+# Versions actually used for every reported run (Python 3.10.22, Linux x86-64, CPU only).
+# The tested environment was created from conda-forge (see environment.yml); torch 2.3.1 there is the
+# conda-forge build 2.3.1.post100 compiled against NumPy 2. With pip wheels of torch 2.3.1 use numpy<2 instead.
+torch==2.3.1
+numpy==2.2.6
+scipy==1.15.2
+pandas==2.2.3
+scikit-learn==1.4.2
+xgboost==2.0.3
+optuna==5.0.0
+SQLAlchemy==2.0.52
+shap==0.48.0
+matplotlib==3.10.9
+PyYAML==6.0.3
+pytest==9.1.1

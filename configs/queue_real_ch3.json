@@ -1,0 +1,10 @@
+{"name": "real_ch3",
+ "comment": "Thesis Chapter 3 protocol on the real PhysioNet 2019 data (Table 3.4 comparison conditions). Hyper-parameters are PROVISIONAL mid-range values from Table 3.3 (no Optuna search; see configs/optuna_search.json for the separate optimisation study).",
+ "jobs": [
+  {"run": "bilstm_acmta", "encoder": "bilstm", "fusion": "acmta"},
+  {"run": "transformer_acmta", "encoder": "transformer", "fusion": "acmta"},
+  {"run": "bilstm_early", "encoder": "bilstm", "fusion": "early"},
+  {"run": "bilstm_late", "encoder": "bilstm", "fusion": "late"},
+  {"run": "bilstm_vitals_only", "encoder": "bilstm", "fusion": "vitals_only"},
+  {"run": "bilstm_labs_only", "encoder": "bilstm", "fusion": "labs_only"}
+ ]}

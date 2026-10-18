@@ -1,0 +1,17 @@
+# Exact tested environment (conda-forge, CPU). Create with: micromamba/conda env create -f environment.yml
+name: acmta-sepsis
+channels: [conda-forge]
+dependencies:
+  - python=3.10.22
+  - pytorch=2.3.1=cpu_mkl_py310h75865b9_100
+  - numpy=2.2.6
+  - scipy=1.15.2
+  - pandas=2.2.3
+  - scikit-learn=1.4.2
+  - xgboost=2.0.3
+  - optuna=5.0.0
+  - sqlalchemy=2.0.52
+  - shap=0.48.0
+  - matplotlib-base=3.10.9
+  - pyyaml=6.0.3
+  - pytest=9.1.1
